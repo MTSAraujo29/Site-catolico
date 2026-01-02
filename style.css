@@ -1,0 +1,158 @@
+:root {
+    /* Color Palette - Divine/Peaceful */
+    --bg-color: #0f172a; /* Deep midnight blue */
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-gold: #fbbf24;
+    --accent-glow: rgba(251, 191, 36, 0.2);
+    
+    /* Typography */
+    --font-heading: 'Cinzel', serif;
+    --font-scripture: 'Lora', serif;
+    --font-ui: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-image: 
+        radial-gradient(circle at 50% 0%, #1e293b 0%, transparent 75%),
+        radial-gradient(circle at 85% 30%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.verse-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: transform 0.5s ease;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.card-header {
+    margin-bottom: 3rem;
+}
+
+.cross-icon {
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px var(--accent-glow);
+    opacity: 0.8;
+}
+
+.daily-title {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+}
+
+.verse-content {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.verse-content p {
+    font-family: var(--font-scripture);
+    font-size: 2rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.loading-text {
+    opacity: 0.5;
+    font-size: 1.25rem !important;
+}
+
+.verse-reference {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    display: inline-block;
+}
+
+.verse-reference cite {
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .verse-card {
+        padding: 3rem 1.5rem;
+        margin: 1rem;
+    }
+
+    .verse-content p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .verse-content p {
+        font-size: 1.25rem;
+    }
+    
+    .daily-title {
+        font-size: 0.75rem;
+    }
+}
